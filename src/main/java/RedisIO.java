@@ -24,7 +24,11 @@ public class RedisIO {
                 System.out.println("-----"+key);
                 HashMap<String,Double> keyMap = cityKeyMap.get(key);
                 jedis.del(key);
-                jedis.zadd(key,keyMap);
+                long starTime=System.currentTimeMillis();
+                //jedis.zadd(key,keyMap);
+                long endTime=System.currentTimeMillis();
+                long Time=endTime-starTime;
+                System.out.println(Time+"ms");
             }
           System.out.println(          jedis.zrevrange("\"重庆市\"",0,-1));
           System.out.println(          jedis.zrevrange("深圳", 0, -1));

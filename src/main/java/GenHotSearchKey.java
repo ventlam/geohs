@@ -42,7 +42,8 @@ public class GenHotSearchKey {
                 "    \"aggs\": {\n" +
                 "     \"top_key\" : {\n" +
                 "      \"terms\" : {\n" +
-                "       \"field\" : \"u_city.raw\"\n" +
+                "       \"field\" : \"u_city.raw\",\n" +
+                "        \"size\": 0\n" +
                 "       },\n" +
                 "       \"aggs\" : {\n" +
                 "        \"top_city_keyword\" : {\n" +
@@ -54,7 +55,6 @@ public class GenHotSearchKey {
                 "       }\n" +
                 "       }\n" +
                 "}";
-
 
         JsonArray ja = TopKey.getAggsFromES(esHost, hostList, query, indexName);
         HashMap<String,HashMap<String,Double>> cityKeyMap = TopKey.JsonTranform(ja);
