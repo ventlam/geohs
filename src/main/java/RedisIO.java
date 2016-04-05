@@ -23,6 +23,7 @@ public class RedisIO {
                 String key = (String)cityIT.next();
                 System.out.println("-----"+key);
                 HashMap<String,Double> keyMap = cityKeyMap.get(key);
+                jedis.del(key);
                 jedis.zadd(key,keyMap);
             }
           System.out.println(          jedis.zrevrange("\"重庆市\"",0,-1));
